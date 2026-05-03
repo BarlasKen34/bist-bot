@@ -1,26 +1,24 @@
-send("📡 TEST MESAJI - BOT ÇALIŞIYOR")
 import os
 import time
 import requests
 import yfinance as yf
 
-# 🔑 TELEGRAM AYARLARI (Railway Variables'tan gelir)
+# 🔑 TELEGRAM (Railway Variables'tan gelir)
 TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
-# 📱 TELEGRAM MESAJ GÖNDERME
+# 📱 TELEGRAM MESAJ
 def send(msg):
     try:
         url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
         requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
-    except:
-        print("Telegram gönderilemedi")
+    except Exception as e:
+        print("Telegram hata:", e)
 
-# 📊 HİSSE LİSTESİ (basit BIST 100 çekirdek)
+# 📊 HİSSELER (BIST 100 çekirdek)
 stocks = [
     "THYAO.IS","EREGL.IS","SISE.IS","AKBNK.IS","KCHOL.IS",
-    "YKBNK.IS","GARAN.IS","ASELS.IS","TUPRS.IS","BIMAS.IS",
-    "SAHOL.IS","FROTO.IS","TOASO.IS","PETKM.IS","KOZAL.IS"
+    "YKBNK.IS","GARAN.IS","ASELS.IS","TUPRS.IS","BIMAS.IS"
 ]
 
 # 📈 SİNYAL KONTROL
@@ -45,7 +43,7 @@ def check(symbol):
         return False
 
 
-# 🚀 ANA DÖNGÜ (7/24 çalışır)
+# 🚀 ANA LOOP
 while True:
     try:
         results = []
@@ -59,7 +57,7 @@ while True:
         else:
             send("📊 BIST Sinyal:\n" + "\n".join(results))
 
-    except:
-        send("⚠️ Bot hata verdi ama çalışmaya devam ediyor")
+    except Exception as e:
+        print("Hata:", e)
 
     time.sleep(600)  # 10 dakika

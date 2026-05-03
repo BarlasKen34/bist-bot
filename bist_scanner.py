@@ -1,3 +1,4 @@
+send("📡 TEST MESAJI - BOT ÇALIŞIYOR")
 import os
 import time
 import requests

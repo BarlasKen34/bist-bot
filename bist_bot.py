@@ -1,1 +1,2 @@
-send("📡 BOT AKTİF - TEST MESAJI")
+import os
+import requests

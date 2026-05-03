@@ -3,6 +3,8 @@ import time
 import requests
 import yfinance as yf
 
+send("📡 BOT AKTİF - TEST MESAJI")
+
 # 🔑 TELEGRAM (Railway Variables'tan gelir)
 TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")

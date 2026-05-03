@@ -3,13 +3,11 @@ import time
 import requests
 import yfinance as yf
 
-send("📡 BOT AKTİF - TEST MESAJI")
-
-# 🔑 TELEGRAM (Railway Variables'tan gelir)
+# 🔑 TELEGRAM AYARLARI (Railway Variables)
 TOKEN = os.getenv("TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
-# 📱 TELEGRAM MESAJ
+# 📱 TELEGRAM MESAJ GÖNDERME
 def send(msg):
     try:
         url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
@@ -17,7 +15,7 @@ def send(msg):
     except Exception as e:
         print("Telegram hata:", e)
 
-# 📊 HİSSELER (BIST 100 çekirdek)
+# 📊 HİSSELER (basit BIST listesi)
 stocks = [
     "THYAO.IS","EREGL.IS","SISE.IS","AKBNK.IS","KCHOL.IS",
     "YKBNK.IS","GARAN.IS","ASELS.IS","TUPRS.IS","BIMAS.IS"
@@ -45,7 +43,10 @@ def check(symbol):
         return False
 
 
-# 🚀 ANA LOOP
+# 🚀 BOT BAŞLANGIÇ TESTİ
+send("📡 BIST BOT AKTİF")
+
+# 🔁 ANA DÖNGÜ
 while True:
     try:
         results = []
